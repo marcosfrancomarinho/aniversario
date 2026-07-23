@@ -98,7 +98,8 @@ export default function App() {
       flex
       items-center
       justify-center
-      p-5
+      p-3
+      sm:p-5
 
       bg-linear-to-br
       from-pink-500
@@ -114,7 +115,10 @@ export default function App() {
         <motion.span
           key={item.id}
           className='absolute text-white select-none pointer-events-none'
-          style={{ left: `${item.left}%`, fontSize: item.size }}
+          style={{
+            left: `${item.left}%`,
+            fontSize: `clamp(${(item.size * 0.55).toFixed(0)}px, 4vw, ${item.size}px)`,
+          }}
           initial={{ y: '110vh', x: 0, opacity: 0, rotate: 0 }}
           animate={{
             y: '-10vh',
@@ -144,7 +148,7 @@ export default function App() {
         }}
       />
 
-      <section className='relative z-10 w-full flex justify-center text-center'>
+      <section className='relative z-10 w-full flex justify-center text-center px-4'>
         <AnimatePresence mode='wait'>
           {/* =====================
               TELA 1
@@ -155,13 +159,16 @@ export default function App() {
                 animate={{ scale: [1, 1.2, 1], rotate: [0, -8, 8, 0] }}
                 transition={{ duration: 1.8, repeat: Infinity }}
               >
-                <Heart size={120} fill='red' className='mx-auto text-red-500 drop-shadow-2xl' />
+                <Heart
+                  fill='red'
+                  className='mx-auto w-20 h-20 sm:w-28 sm:h-28 md:w-32 md:h-32 text-red-500 drop-shadow-2xl'
+                />
               </motion.div>
 
               <motion.h1
                 animate={{ scale: [1, 1.04, 1] }}
                 transition={{ duration: 2, repeat: Infinity }}
-                className='mt-8 mb-10 text-5xl md:text-6xl font-black text-white drop-shadow-2xl'
+                className='mt-6 mb-8 sm:mt-8 sm:mb-10 text-3xl sm:text-5xl md:text-6xl font-black text-white drop-shadow-2xl px-2'
               >
                 Tenho uma surpresa
               </motion.h1>
@@ -172,7 +179,7 @@ export default function App() {
                 whileTap={{ scale: 0.9 }}
                 animate={{ boxShadow: ['0 0 0px rgba(255,255,255,0.4)', '0 0 35px rgba(255,255,255,0.9)', '0 0 0px rgba(255,255,255,0.4)'] }}
                 transition={{ boxShadow: { duration: 1.6, repeat: Infinity } }}
-                className='bg-white text-pink-600 px-10 py-5 rounded-full text-xl font-black shadow-2xl'
+                className='bg-white text-pink-600 px-6 py-3 sm:px-10 sm:py-5 rounded-full text-base sm:text-xl font-black shadow-2xl'
               >
                 Clique aqui ✨
               </motion.button>
@@ -184,19 +191,19 @@ export default function App() {
           ====================== */}
           {step === 2 && (
             <Screen screenKey={2}>
-              <div className='max-w-xl'>
+              <div className='max-w-xl w-full'>
                 <motion.div
                   animate={{ rotate: [0, 15, -15, 0], scale: [1, 1.2, 1] }}
                   transition={{ duration: 1.8, repeat: Infinity }}
                 >
-                  <Sparkles size={90} className='mx-auto text-yellow-300 drop-shadow-xl' />
+                  <Sparkles className='mx-auto w-14 h-14 sm:w-20 sm:h-20 md:w-24 md:h-24 text-yellow-300 drop-shadow-xl' />
                 </motion.div>
 
                 <motion.h1
                   initial={{ opacity: 0, y: -20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.15 }}
-                  className='mt-6 text-5xl md:text-6xl font-black text-white drop-shadow-2xl'
+                  className='mt-4 sm:mt-6 text-3xl sm:text-5xl md:text-6xl font-black text-white drop-shadow-2xl'
                 >
                   Feliz aniversário 🎂
                 </motion.h1>
@@ -206,15 +213,15 @@ export default function App() {
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: 0.4, type: 'spring' }}
                   whileHover={{ scale: 1.03 }}
-                  className='mt-8 bg-white/20 backdrop-blur-xl rounded-3xl p-8 shadow-2xl'
+                  className='mt-6 sm:mt-8 bg-white/20 backdrop-blur-xl rounded-3xl p-5 sm:p-8 shadow-2xl'
                 >
-                  <p className='text-xl md:text-2xl text-white font-medium'>
+                  <p className='text-base sm:text-xl md:text-2xl text-white font-medium'>
                     Que seu dia seja cheio de alegria, sorrisos e momentos especiais
                   </p>
                   <motion.p
                     animate={{ opacity: [1, 0.5, 1] }}
                     transition={{ duration: 1.8, repeat: Infinity }}
-                    className='mt-5 text-yellow-200 text-xl font-bold'
+                    className='mt-4 sm:mt-5 text-yellow-200 text-base sm:text-xl font-bold'
                   >
                     Você merece tudo de melhor ✨
                   </motion.p>
@@ -226,7 +233,7 @@ export default function App() {
                   whileTap={{ scale: 0.9 }}
                   animate={{ y: [0, -8, 0], rotate: [0, 3, -3, 0] }}
                   transition={{ duration: 1.8, repeat: Infinity }}
-                  className='mt-10 bg-linear-to-r from-pink-500 to-red-500 text-white px-10 py-4 rounded-full text-xl font-bold shadow-xl'
+                  className='mt-8 sm:mt-10 bg-linear-to-r from-pink-500 to-red-500 text-white px-6 py-3 sm:px-10 sm:py-4 rounded-full text-base sm:text-xl font-bold shadow-xl'
                 >
                   Continuar 💖
                 </motion.button>
@@ -242,7 +249,7 @@ export default function App() {
               <motion.div
                 animate={{ y: [0, -20, 0], rotate: [0, 8, -8, 0], scale: [1, 1.1, 1] }}
                 transition={{ duration: 1.8, repeat: Infinity }}
-                className='text-8xl'
+                className='text-6xl sm:text-7xl md:text-8xl'
               >
                 🎁
               </motion.div>
@@ -250,7 +257,7 @@ export default function App() {
               <motion.h1
                 animate={{ scale: [1, 1.03, 1] }}
                 transition={{ duration: 1.6, repeat: Infinity }}
-                className='mt-8 text-5xl md:text-6xl font-black text-white drop-shadow-2xl'
+                className='mt-6 sm:mt-8 text-3xl sm:text-5xl md:text-6xl font-black text-white drop-shadow-2xl px-2'
               >
                 Tenho algo especial para você ✨
               </motion.h1>
@@ -258,7 +265,7 @@ export default function App() {
               <motion.p
                 animate={{ opacity: [1, 0.6, 1] }}
                 transition={{ duration: 1.5, repeat: Infinity }}
-                className='mt-5 text-xl md:text-2xl text-yellow-200'
+                className='mt-4 sm:mt-5 text-base sm:text-xl md:text-2xl text-yellow-200'
               >
                 Uma surpresa feita com carinho ❤️
               </motion.p>
@@ -269,7 +276,7 @@ export default function App() {
                 whileTap={{ scale: 0.9 }}
                 animate={{ scale: [1, 1.06, 1] }}
                 transition={{ scale: { duration: 1.2, repeat: Infinity } }}
-                className='mt-10 bg-white text-pink-600 px-10 py-4 rounded-full text-xl font-black shadow-2xl'
+                className='mt-8 sm:mt-10 bg-white text-pink-600 px-6 py-3 sm:px-10 sm:py-4 rounded-full text-base sm:text-xl font-black shadow-2xl'
               >
                 Abrir presente 🎁
               </motion.button>
@@ -282,12 +289,12 @@ export default function App() {
           {step === 4 && (
             <Screen screenKey={4}>
               <motion.button onClick={openGift} disabled={opened} className='relative'>
-                <div className='relative w-80 h-72'>
+                <div className='relative w-56 h-48 sm:w-72 sm:h-64 md:w-80 md:h-72'>
                   {/* TAMPA */}
                   <motion.div
                     animate={
                       opened
-                        ? { y: -260, rotate: -25, scale: 1.15, opacity: 0 }
+                        ? { y: -220, rotate: -25, scale: 1.15, opacity: 0 }
                         : { y: [0, -14, 0], rotate: [0, -3, 3, 0] }
                     }
                     transition={
@@ -295,16 +302,16 @@ export default function App() {
                         ? { duration: 0.4, ease: 'easeOut' }
                         : { duration: 1.6, repeat: Infinity }
                     }
-                    className='absolute -top-10 w-full h-24 rounded-3xl bg-linear-to-r from-yellow-300 via-pink-400 to-red-500 shadow-[0_0_40px_rgba(255,255,255,.5)] border-4 border-white/30 z-20'
+                    className='absolute -top-7 sm:-top-9 md:-top-10 w-full h-16 sm:h-20 md:h-24 rounded-3xl bg-linear-to-r from-yellow-300 via-pink-400 to-red-500 shadow-[0_0_40px_rgba(255,255,255,.5)] border-4 border-white/30 z-20'
                   />
 
                   {/* CORPO */}
                   <motion.div
                     animate={opened ? { scale: [1, 1.15, 1] } : { scale: [1, 1.02, 1] }}
                     transition={{ duration: opened ? 0.4 : 2, repeat: opened ? 0 : Infinity }}
-                    className='absolute bottom-0 w-full h-52 rounded-3xl bg-linear-to-br from-purple-700 via-pink-600 to-red-600 shadow-2xl overflow-hidden'
+                    className='absolute bottom-0 w-full h-36 sm:h-44 md:h-52 rounded-3xl bg-linear-to-br from-purple-700 via-pink-600 to-red-600 shadow-2xl overflow-hidden'
                   >
-                    <div className='absolute left-1/2 -translate-x-1/2 w-14 h-full bg-yellow-300' />
+                    <div className='absolute left-1/2 -translate-x-1/2 w-10 sm:w-12 md:w-14 h-full bg-yellow-300' />
 
                     <motion.div
                       animate={{ x: ['-120%', '120%'] }}
@@ -317,7 +324,7 @@ export default function App() {
                   <motion.div
                     animate={
                       opened
-                        ? { y: -280, scale: 2, rotate: 420, opacity: 0 }
+                        ? { y: -240, scale: 2, rotate: 420, opacity: 0 }
                         : { rotate: [0, 5, -5, 0] }
                     }
                     transition={
@@ -325,7 +332,7 @@ export default function App() {
                         ? { duration: 0.5, ease: 'easeOut' }
                         : { duration: 2, repeat: Infinity }
                     }
-                    className='absolute -top-36 left-1/2 -translate-x-1/2 text-8xl'
+                    className='absolute -top-24 sm:-top-28 md:-top-36 left-1/2 -translate-x-1/2 text-5xl sm:text-6xl md:text-8xl'
                   >
                     🎀
                   </motion.div>
@@ -345,7 +352,7 @@ export default function App() {
                           initial={{ opacity: 0, scale: 0, y: 0 }}
                           animate={{ opacity: [0, 1, 0], scale: [0, 1.4, 1], y: -160 }}
                           transition={{ duration: 0.9, delay: p.delay }}
-                          className={`absolute ${p.x} top-0 text-6xl`}
+                          className={`absolute ${p.x} top-0 text-3xl sm:text-4xl md:text-6xl`}
                         >
                           {p.icon}
                         </motion.span>
@@ -358,7 +365,7 @@ export default function App() {
                   <motion.p
                     animate={{ scale: [1, 1.1, 1] }}
                     transition={{ duration: 1.2, repeat: Infinity }}
-                    className='mt-8 text-white font-black text-xl drop-shadow-xl'
+                    className='mt-6 sm:mt-8 text-white font-black text-base sm:text-xl drop-shadow-xl'
                   >
                     ✨ Toque para abrir ✨
                   </motion.p>
@@ -375,7 +382,7 @@ export default function App() {
               <motion.div
                 animate={{ y: [0, -8, 0] }}
                 transition={{ duration: 3, repeat: Infinity }}
-                className='relative w-87.5 h-155 rounded-[2.5rem] overflow-hidden shadow-2xl bg-black'
+                className='relative w-[85vw] max-w-sm aspect-9/16 rounded-4xl sm:rounded-[2.5rem] overflow-hidden shadow-2xl bg-black'
               >
                 <motion.img
                   src='/foto.jpeg'
@@ -390,7 +397,7 @@ export default function App() {
                 <motion.div
                   animate={{ y: [0, -16, 0], scale: [1, 1.25, 1], rotate: [0, 10, -10, 0] }}
                   transition={{ duration: 2, repeat: Infinity }}
-                  className='absolute top-28 right-6 text-5xl z-20'
+                  className='absolute top-16 sm:top-24 md:top-28 right-4 sm:right-6 text-3xl sm:text-4xl md:text-5xl z-20'
                 >
                   ❤️
                 </motion.div>
@@ -400,30 +407,30 @@ export default function App() {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.6 }}
-                  className='absolute top-6 left-6 z-20'
+                  className='absolute top-4 left-4 sm:top-6 sm:left-6 z-20'
                 >
                   <motion.div
                     animate={{ rotate: 360 }}
                     transition={{ duration: 6, repeat: Infinity, ease: 'linear' }}
                   >
-                    <Star size={32} className='text-yellow-300' fill='currentColor' />
+                    <Star className='w-5 h-5 sm:w-7 sm:h-7 md:w-8 md:h-8 text-yellow-300' fill='currentColor' />
                   </motion.div>
                 </motion.div>
 
-                <div className='absolute bottom-0 left-0 right-0 p-8 pt-28 text-center z-20 bg-linear-to-t from-black/90 via-black/30 to-transparent'>
+                <div className='absolute bottom-0 left-0 right-0 p-4 pt-16 sm:p-6 sm:pt-20 md:p-8 md:pt-28 text-center z-20 bg-linear-to-t from-black/90 via-black/30 to-transparent'>
                   <motion.div
                     initial={{ opacity: 0, scale: 0.5 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ delay: 0.5, type: 'spring' }}
                   >
-                    <PartyPopper size={40} className='mx-auto text-yellow-300 mb-2' />
+                    <PartyPopper className='mx-auto w-7 h-7 sm:w-9 sm:h-9 md:w-10 md:h-10 text-yellow-300 mb-2' />
                   </motion.div>
 
                   <motion.p
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.8 }}
-                    className='mt-3 text-white text-lg drop-shadow-xl'
+                    className='mt-2 sm:mt-3 text-white text-sm sm:text-base md:text-lg drop-shadow-xl'
                   >
                     Consegui a foto do dia que você conheceu o Justin Bieber ✨
                   </motion.p>
